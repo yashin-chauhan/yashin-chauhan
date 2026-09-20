@@ -150,6 +150,8 @@ For those projects, I focus on sharing the **engineering decisions, architecture
 
 **GitHub:** https://github.com/yashin-chauhan
 
+**Linkedin:** https://www.linkedin.com/in/yashin-chauhan
+
 ---
 
 > Building software, learning in public, and turning ideas into working products.
