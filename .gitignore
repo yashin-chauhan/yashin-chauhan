@@ -1,0 +1,13 @@
+# Word Documents & Temp Files
+*.docx
+~$*.docx
+*.doc
+
+# OS & System Files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Environment & Logs
+*.log
+.env
