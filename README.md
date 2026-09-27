@@ -99,6 +99,20 @@ I take pride in transforming ideas from **problem → architecture → clean cod
 
 ---
 
+### 🏛️ [Dr. YSP University — Institutional Web Portal & Faculty ERP](./projects/ysp-university.md)
+*A comprehensive institutional web platform, faculty onboarding portal, and centralized notice & tender management system for Dr. Y.S. Parmar University of Horticulture & Forestry (UHF Nauni).*
+
+* **Problem Solved:** Decentralized faculty profiles, unverified registrations, circular clutter with lingering expired notices, and managing multi-campus directories across 4 colleges, 5 research stations, and 5 KVK centers.
+* **Engineering Highlights:**
+  * **Asynchronous Domain Email & OTP Verification:** Multi-stage challenge verifying institutional email patterns and session-bound OTPs before account provisioning.
+  * **Dynamic Faculty Page Binding:** Centralized helper architecture (`getFaculty($page)`) dynamically mapping approved faculty members to department pages with zero code deployments.
+  * **Automated Notice & Tender Expiry Lifecycle:** Real-time date-filtered query engine automatically archiving expired tenders, job vacancies, and circulars from public feeds.
+  * **Super Admin Governance ERP:** Centralized administration dashboard with Yajra DataTables, AJAX status toggling, and dynamic academic curriculum table managers.
+* **Tech Stack:** `PHP 8` · `Laravel 8` · `MySQL 8` · `Blade` · `DataTables 1.13` · `jQuery AJAX` · `Bootstrap 4` · `Toastr.js`
+* 🔗 **Live:** [uhf.ac.in](https://uhf.ac.in/) | 📖 **Deep Dive:** [Read Architectural Case Study](./projects/ysp-university.md)
+
+---
+
 ### 📚 Rudravidya
 A learning and skill-assessment platform focused on helping users understand their knowledge, identify gaps, and improve through structured assessment across web and mobile.
 

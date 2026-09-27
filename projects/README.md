@@ -12,6 +12,7 @@ A curated catalog of production systems, SaaS platforms, enterprise ERPs, and sp
 | **🚚 Compass Transport** | Freight Logistics & Supply Chain | `PHP 8`, `Laravel 8`, `MySQL 8`, `Blade`, `DomPDF`, `Laravel-Excel` | Multi-branch session isolation (`DLI` vs `UMB`), dynamic counter bilty billing, payment-status GST allocation, high-fidelity vector PDF generation | [View Deep Dive ➔](./compass-transport.md) |
 | **💎 Gems Testing India** | Gemology & Authenticity Verification | `PHP 8.1+`, `Laravel 10`, `MySQL 8`, `DomPDF 2.0`, `Yajra DataTables` | Sub-8ms multi-table SQL `UNION` lookup engine, 4-tier division schema (Gems, Diamonds, Jewelry, Rudraksha), exact millimeter PVC card PDF engine | [View Deep Dive ➔](./gems-testing-india.md) |
 | **🌾 Pragya Crop Advisory** | AgriTech & Grassroots NGO | `PHP 8.1+`, `Laravel 10`, `MySQL 8`, `RESTful API`, `UTF-8 Bilingual Engine` | 12-stage crop lifecycle modeling, composite joins for pest/disease IPM diagnostics, dynamic mobile taxonomy, bilingual Devanagari normalizer | [View Deep Dive ➔](./pragya-crop-advisory.md) |
+| **🏛️ Dr. YSP University** | Higher Education & Institutional ERP | `PHP 8`, `Laravel 8`, `MySQL 8`, `Blade`, `DataTables`, `jQuery AJAX` | Asynchronous institutional email & OTP onboarding, dynamic faculty-to-department page binding (`getFaculty`), automated notice/tender auto-expiry | [View Deep Dive ➔](./ysp-university.md) |
 
 ---
 
@@ -46,6 +47,13 @@ flowchart TD
         PA_DB[("MySQL 8 (Relational Agronomy)")]
         PA_FE --> PA_BE --> PA_DB
     end
+
+    subgraph InstitutionalERP["Academic ERP (YSP University)"]
+        YU_FE["Public Portal + Faculty Self-Service + Admin Console"]
+        YU_BE["Laravel 8 MVC + Dual Auth Guards + OTP Engine"]
+        YU_DB[("MySQL 8 (Employees, Notifications, Tables)")]
+        YU_FE --> YU_BE --> YU_DB
+    end
 ```
 
 ---
@@ -57,7 +65,7 @@ flowchart TD
 ├── Frameworks & Libraries: Next.js (14/15 App Router), React 19, NestJS 11, Fastify 5, React Native (Expo 52), Laravel (8.x & 10.x), Express.js
 ├── Databases & ORM: PostgreSQL (Supabase, Pooling), MySQL 8.x, MongoDB, Prisma 7, Eloquent ORM
 ├── Caching & Async: Redis, BullMQ Background Queues
-├── Document & Reporting Engines: Barryvdh DomPDF (Print-exact Vector Cards & Bilties), Maatwebsite Laravel-Excel
+├── Document & Reporting Engines: Barryvdh DomPDF (Print-exact Vector Cards & Bilties), Maatwebsite Laravel-Excel, Yajra DataTables
 ├── DevOps & Cloud: Cloudflare (WAF/DNS), Nginx Reverse Proxy, Oracle Cloud Infrastructure, PM2, Git, GitHub Actions
 ```
 
@@ -88,6 +96,12 @@ flowchart TD
    * High-performance composite joins for disease & pest mitigation
    * Dynamic taxonomy decoupling mobile app UI from app-store binary updates
    * Devanagari Unicode (`utf8mb4`) and English bilingual data pipeline
+
+5. **[Dr. YSP University Architectural Deep-Dive](./ysp-university.md)**
+   * Asynchronous institutional domain verification and session-bound OTP validation
+   * Centralized helper architecture (`getFaculty($page)`) for dynamic faculty-to-department page binding
+   * Automated date-filtered notice, tender, and recruitment circular expiration engine
+   * Multi-campus navigation tree for 4 colleges, 5 research stations, and 5 KVK centers
 
 ---
 
