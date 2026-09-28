@@ -72,7 +72,22 @@ I take pride in transforming ideas from **problem → architecture → clean cod
 
 ---
 
+### 🩺 [Medilab — Diagnostic Pathology Laboratory & Patient Portal System](./projects/medilab-pathology.md)
+*A full-featured diagnostic pathology laboratory management platform featuring an A-Z test catalog, online appointment booking, Razorpay payment gateway, and digital report delivery.*
+
+* **Problem Solved:** Diagnostic clinics suffer from long counter queues, manual paper scheduling, physical collection trips for reports, and counter cash reconciliation friction.
+* **Engineering Highlights:**
+  * **Dynamic A-Z Diagnostic Test Search:** Interactive 26-letter index enabling instant filtering of pathology tests (CBC, Thyroid, Lipid Profile) with real-time pricing and sample preparation instructions.
+  * **Razorpay Payment Gateway Integration:** Secure online fee checkout with automated signature verification, capture handling, and transaction logging.
+  * **End-to-End Digital Report Delivery:** Secure workflow enabling lab technicians to upload diagnostic PDF/image reports mapped directly to patient IDs for 24/7 authenticated downloads.
+  * **Dual-Guard Session Authentication:** Segregated security boundaries separating administrative operations (`admin_auth`) from patient self-service (`user_auth`).
+* **Tech Stack:** `PHP 8` · `Laravel 8` · `MySQL 8` · `Razorpay SDK` · `Blade` · `Bootstrap 5` · `AOS`
+* 📂 **Showcase:** [GitHub Repo](https://github.com/yashin-chauhan/pathology-lab-management-showcase) | 📖 **Deep Dive:** [Read Architectural Case Study](./projects/medilab-pathology.md)
+
+---
+
 ### 💎 [Gems Testing India (GTI) — Gemological Laboratory Management Platform](./projects/gems-testing-india.md)
+
 *A multi-division gemstone authentication, physical certificate generation, and instant public verification platform for professional gemological laboratories.*
 
 * **Problem Solved:** Counterfeit physical gem certificates, manual card formatting bottlenecks, and disparate data requirements for gemstones, diamonds, jewelry, and Rudraksha beads.

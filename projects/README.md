@@ -10,6 +10,7 @@ A curated catalog of production systems, SaaS platforms, enterprise ERPs, and sp
 | :--- | :--- | :--- | :--- | :--- |
 | **🏠 RentKhata** | PropTech / Co-Living SaaS | `Next.js 15`, `NestJS 11`, `React Native (Expo 52)`, `PostgreSQL`, `Prisma 7`, `Redis` | Double-entry financial ledger (integer paise), multi-tenant property hierarchy, sub-meter utility billing, tenant self-service portal | [View Deep Dive ➔](./rentkhata.md) |
 | **🚚 Compass Transport** | Freight Logistics & Supply Chain | `PHP 8`, `Laravel 8`, `MySQL 8`, `Blade`, `DomPDF`, `Laravel-Excel` | Multi-branch session isolation (`DLI` vs `UMB`), dynamic counter bilty billing, payment-status GST allocation, high-fidelity vector PDF generation | [View Deep Dive ➔](./compass-transport.md) |
+| **🩺 Medilab** | HealthTech / Pathology SaaS | `PHP 8`, `Laravel 8`, `MySQL 8`, `Razorpay API`, `Bootstrap 5` | A-Z diagnostic test search, Razorpay online payment capture, patient portal with 24/7 digital medical report downloads, dual-guard session auth | [View Deep Dive ➔](./medilab-pathology.md) |
 | **💎 Gems Testing India** | Gemology & Authenticity Verification | `PHP 8.1+`, `Laravel 10`, `MySQL 8`, `DomPDF 2.0`, `Yajra DataTables` | Sub-8ms multi-table SQL `UNION` lookup engine, 4-tier division schema (Gems, Diamonds, Jewelry, Rudraksha), exact millimeter PVC card PDF engine | [View Deep Dive ➔](./gems-testing-india.md) |
 | **🌾 Pragya Crop Advisory** | AgriTech & Grassroots NGO | `PHP 8.1+`, `Laravel 10`, `MySQL 8`, `RESTful API`, `UTF-8 Bilingual Engine` | 12-stage crop lifecycle modeling, composite joins for pest/disease IPM diagnostics, dynamic mobile taxonomy, bilingual Devanagari normalizer | [View Deep Dive ➔](./pragya-crop-advisory.md) |
 | **🏛️ Dr. YSP University** | Higher Education & Institutional ERP | `PHP 8`, `Laravel 8`, `MySQL 8`, `Blade`, `DataTables`, `jQuery AJAX` | Asynchronous institutional email & OTP onboarding, dynamic faculty-to-department page binding (`getFaculty`), automated notice/tender auto-expiry | [View Deep Dive ➔](./ysp-university.md) |
@@ -32,6 +33,13 @@ flowchart TD
         CT_BE["Laravel 8 MVC + DomPDF + Excel"]
         CT_DB[("MySQL 8 (Branch Isolated)")]
         CT_FE --> CT_BE --> CT_DB
+    end
+
+    subgraph HealthTech["HealthTech & Pathology (Medilab)"]
+        ML_FE["Blade + Bootstrap 5 + A-Z Filter"]
+        ML_BE["Laravel 8 + Razorpay SDK + Auth Guards"]
+        ML_DB[("MySQL 8 (Users, Reports, Appts)")]
+        ML_FE --> ML_BE --> ML_DB
     end
 
     subgraph LabVerification["Laboratory Verification (GTI)"]
@@ -64,6 +72,7 @@ flowchart TD
 ├── Languages: TypeScript, JavaScript (ES6+), PHP (7.4, 8.x, 8.1+), SQL, HTML5, CSS3
 ├── Frameworks & Libraries: Next.js (14/15 App Router), React 19, NestJS 11, Fastify 5, React Native (Expo 52), Laravel (8.x & 10.x), Express.js
 ├── Databases & ORM: PostgreSQL (Supabase, Pooling), MySQL 8.x, MongoDB, Prisma 7, Eloquent ORM
+├── Payment Gateways: Razorpay PHP SDK
 ├── Caching & Async: Redis, BullMQ Background Queues
 ├── Document & Reporting Engines: Barryvdh DomPDF (Print-exact Vector Cards & Bilties), Maatwebsite Laravel-Excel, Yajra DataTables
 ├── DevOps & Cloud: Cloudflare (WAF/DNS), Nginx Reverse Proxy, Oracle Cloud Infrastructure, PM2, Git, GitHub Actions
@@ -85,19 +94,25 @@ flowchart TD
    * GST compliance engine based on consignment terms (`PAID` vs `TO PAY`)
    * Consolidated consignee statement vouchers
 
-3. **[Gems Testing India Architectural Deep-Dive](./gems-testing-india.md)**
+3. **[Medilab Pathology Laboratory Deep-Dive](./medilab-pathology.md)**
+   * Real-time A-Z diagnostic test catalog search engine
+   * Direct Razorpay payment gateway integration for test booking fees
+   * End-to-end digital report delivery system mapping files to patient profiles
+   * Dual-guard session authentication architecture (`admin_auth` & `user_auth`)
+
+4. **[Gems Testing India Architectural Deep-Dive](./gems-testing-india.md)**
    * Universal single-index search resolving across 4 polymorphic laboratory models in <8ms
    * Vector PVC card generation pipeline with custom print stylesheets
    * Asynchronous server-side Yajra DataTables integration
    * Granular batch Excel import validator
 
-4. **[Pragya Crop Advisory Architectural Deep-Dive](./pragya-crop-advisory.md)**
+5. **[Pragya Crop Advisory Architectural Deep-Dive](./pragya-crop-advisory.md)**
    * Comprehensive 12-stage agricultural decision tree
    * High-performance composite joins for disease & pest mitigation
    * Dynamic taxonomy decoupling mobile app UI from app-store binary updates
    * Devanagari Unicode (`utf8mb4`) and English bilingual data pipeline
 
-5. **[Dr. YSP University Architectural Deep-Dive](./ysp-university.md)**
+6. **[Dr. YSP University Architectural Deep-Dive](./ysp-university.md)**
    * Asynchronous institutional domain verification and session-bound OTP validation
    * Centralized helper architecture (`getFaculty($page)`) for dynamic faculty-to-department page binding
    * Automated date-filtered notice, tender, and recruitment circular expiration engine
