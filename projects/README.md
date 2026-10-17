@@ -8,6 +8,7 @@ A curated catalog of production systems, SaaS platforms, enterprise ERPs, and sp
 
 | Project | Domain / Industry | Core Tech Stack | Architectural Highlights | Showcase Document |
 | :--- | :--- | :--- | :--- | :--- |
+| **🎯 TargetTNgrp4** | EdTech / Competitive Exam SaaS | `Next.js 16 App Router`, `React 19`, `TypeScript (Strict)`, `Prisma 5`, `PostgreSQL`, `Tailwind v4` | Authentic 200Q/180-min exam engine, zero answer leakage server scoring, automated spaced-repetition Mistake Book, dual independent JWT/DB auth | [View Deep Dive ➔](./targettngrp4.md) |
 | **🏠 RentKhata** | PropTech / Co-Living SaaS | `Next.js 15`, `NestJS 11`, `React Native (Expo 52)`, `PostgreSQL`, `Prisma 7`, `Redis` | Double-entry financial ledger (integer paise), multi-tenant property hierarchy, sub-meter utility billing, tenant self-service portal | [View Deep Dive ➔](./rentkhata.md) |
 | **🚚 Compass Transport** | Freight Logistics & Supply Chain | `PHP 8`, `Laravel 8`, `MySQL 8`, `Blade`, `DomPDF`, `Laravel-Excel` | Multi-branch session isolation (`DLI` vs `UMB`), dynamic counter bilty billing, payment-status GST allocation, high-fidelity vector PDF generation | [View Deep Dive ➔](./compass-transport.md) |
 | **🩺 Medilab** | HealthTech / Pathology SaaS | `PHP 8`, `Laravel 8`, `MySQL 8`, `Razorpay API`, `Bootstrap 5` | A-Z diagnostic test search, Razorpay online payment capture, patient portal with 24/7 digital medical report downloads, dual-guard session auth | [View Deep Dive ➔](./medilab-pathology.md) |
@@ -21,6 +22,13 @@ A curated catalog of production systems, SaaS platforms, enterprise ERPs, and sp
 
 ```mermaid
 flowchart TD
+    subgraph EdTechExam["Competitive Exam SaaS (TargetTNgrp4)"]
+        TN_FE["Next.js 16 Web + OMR Exam Runner"]
+        TN_BE["Next.js 16 Server Actions + Prisma 5"]
+        TN_DB[("PostgreSQL (Pooled)")]
+        TN_FE --> TN_BE --> TN_DB
+    end
+
     subgraph EnterpriseSaaS["PropTech SaaS (RentKhata)"]
         RK_FE["Next.js 15 Web + Expo 52 Mobile"]
         RK_BE["NestJS 11 Fastify + Prisma 7"]
@@ -69,12 +77,13 @@ flowchart TD
 ## 🛠️ Technology Breakdown
 
 ```
-├── Languages: TypeScript, JavaScript (ES6+), PHP (7.4, 8.x, 8.1+), SQL, HTML5, CSS3
-├── Frameworks & Libraries: Next.js (14/15 App Router), React 19, NestJS 11, Fastify 5, React Native (Expo 52), Laravel (8.x & 10.x), Express.js
-├── Databases & ORM: PostgreSQL (Supabase, Pooling), MySQL 8.x, MongoDB, Prisma 7, Eloquent ORM
-├── Payment Gateways: Razorpay PHP SDK
+├── Languages: TypeScript (Strict), JavaScript (ES6+), PHP (7.4, 8.x, 8.1+), SQL, HTML5, CSS3
+├── Frameworks & Libraries: Next.js (15/16 App Router), React 19, NestJS 11, Fastify 5, React Native (Expo 52), Laravel (8.x & 10.x), Express.js
+├── Databases & ORM: PostgreSQL (Supabase, Neon, Pooling), MySQL 8.x, MongoDB, Prisma (5.x & 7.x), Eloquent ORM
+├── Styling & Validation: Tailwind CSS (v3 & v4), Bootstrap (4 & 5), Zod 4
+├── Payment Gateways: Razorpay SDK, Webhook HMAC-SHA256 Verification, Direct UPI Workflows
 ├── Caching & Async: Redis, BullMQ Background Queues
-├── Document & Reporting Engines: Barryvdh DomPDF (Print-exact Vector Cards & Bilties), Maatwebsite Laravel-Excel, Yajra DataTables
+├── Document & Reporting Engines: Barryvdh DomPDF (Print-exact Vector Cards & Bilties), Maatwebsite Laravel-Excel, Yajra DataTables, PapaParse
 ├── DevOps & Cloud: Cloudflare (WAF/DNS), Nginx Reverse Proxy, Oracle Cloud Infrastructure, PM2, Git, GitHub Actions
 ```
 
@@ -82,37 +91,44 @@ flowchart TD
 
 ## 📂 Quick Project Navigation
 
-1. **[RentKhata Architectural Deep-Dive](./rentkhata.md)**
+1. **[TargetTNgrp4 Architectural Deep-Dive](./targettngrp4.md)**
+   * Authentic 200-question/180-min exam runner with OMR palette & persistent autosave
+   * Server-side evaluation pipeline with zero answer key leakage
+   * Automated spaced-repetition Mistake Book with consecutive-correct mastery tracking
+   * Dual independent authentication: stateless student JWT vs stateful admin DB sessions
+   * Strict 150-line clean code standard across repository
+
+2. **[RentKhata Architectural Deep-Dive](./rentkhata.md)**
    * Multi-tenant property inventory modeling
    * Append-only double-entry ledger & integer paise calculations
    * Contract-first OpenAPI client code generation
    * Microservice-ready modular architecture
 
-2. **[Compass Transport Architectural Deep-Dive](./compass-transport.md)**
+3. **[Compass Transport Architectural Deep-Dive](./compass-transport.md)**
    * Regional branch context partitioning & ID prefixes
    * Real-time counter bilty drafting & live client auto-completion
    * GST compliance engine based on consignment terms (`PAID` vs `TO PAY`)
    * Consolidated consignee statement vouchers
 
-3. **[Medilab Pathology Laboratory Deep-Dive](./medilab-pathology.md)**
+4. **[Medilab Pathology Laboratory Deep-Dive](./medilab-pathology.md)**
    * Real-time A-Z diagnostic test catalog search engine
    * Direct Razorpay payment gateway integration for test booking fees
    * End-to-end digital report delivery system mapping files to patient profiles
    * Dual-guard session authentication architecture (`admin_auth` & `user_auth`)
 
-4. **[Gems Testing India Architectural Deep-Dive](./gems-testing-india.md)**
+5. **[Gems Testing India Architectural Deep-Dive](./gems-testing-india.md)**
    * Universal single-index search resolving across 4 polymorphic laboratory models in <8ms
    * Vector PVC card generation pipeline with custom print stylesheets
    * Asynchronous server-side Yajra DataTables integration
    * Granular batch Excel import validator
 
-5. **[Pragya Crop Advisory Architectural Deep-Dive](./pragya-crop-advisory.md)**
+6. **[Pragya Crop Advisory Architectural Deep-Dive](./pragya-crop-advisory.md)**
    * Comprehensive 12-stage agricultural decision tree
    * High-performance composite joins for disease & pest mitigation
    * Dynamic taxonomy decoupling mobile app UI from app-store binary updates
    * Devanagari Unicode (`utf8mb4`) and English bilingual data pipeline
 
-6. **[Dr. YSP University Architectural Deep-Dive](./ysp-university.md)**
+7. **[Dr. YSP University Architectural Deep-Dive](./ysp-university.md)**
    * Asynchronous institutional domain verification and session-bound OTP validation
    * Centralized helper architecture (`getFaculty($page)`) for dynamic faculty-to-department page binding
    * Automated date-filtered notice, tender, and recruitment circular expiration engine

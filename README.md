@@ -44,6 +44,21 @@ I take pride in transforming ideas from **problem → architecture → clean cod
 
 ---
 
+### 🎯 [TargetTNgrp4 — Enterprise Bilingual Exam Engine & Aspirant Operating Platform](./projects/targettngrp4.md)
+*A high-performance, bilingual (Tamil & English) SaaS mock examination engine, syllabus practice platform, and automated mistake diagnostic system engineered for TNPSC Group 4 aspirants.*
+
+* **Problem Solved:** 2,000,000+ aspirants face razor-thin cutoff margins (260+/300), 200 questions in 180 minutes exam stamina deficits, lack of authentic Tamil typography/literature formatting, and unstructured mistake recurrence without spaced repetition.
+* **Engineering Highlights:**
+  * **Authentic 200Q Blueprint Simulation:** 1:1 TNPSC blueprint (Part A: 100 Tamil, Part B: 75 GS, Part C: 25 Aptitude) with 180-min timer, OMR answer palette, and resilient local storage autosave.
+  * **Server-Side Scoring & Zero Answer Leakage:** Live exam payloads strip all answer keys and explanations before browser transmission, eliminating inspect-element exploits; scoring runs atomically server-side.
+  * **Automated Spaced-Repetition "Mistake Book":** Incorrect attempts automatically feed a dedicated Mistake Book tracking consecutive-correct mastery thresholds.
+  * **Clean Architecture & Strict 150-Line Limit:** Every file adheres strictly to a $\le 150$-line limit with decoupled hooks, atomic UI components, and domain services.
+  * **Dual Independent Security:** Stateless student JWT cookies isolated from DB-backed stateful admin sessions with CSRF origin guards.
+* **Tech Stack:** `Next.js 16 (App Router)` · `React 19` · `TypeScript (Strict)` · `Prisma 5.19` · `PostgreSQL` · `Tailwind CSS v4` · `Zod 4` · `Razorpay SDK`
+* 📖 **Deep Dive:** [Read Architectural Case Study](./projects/targettngrp4.md)
+
+---
+
 ### 🏠 [RentKhata — Enterprise PG & Co-Living Operating Platform](./projects/rentkhata.md)
 *A multi-tenant, double-entry financial operating system engineered for Indian PG, co-living, and hostel operators.*
 
