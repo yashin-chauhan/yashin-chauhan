@@ -10,6 +10,7 @@ A curated catalog of production systems, SaaS platforms, enterprise ERPs, and sp
 | :--- | :--- | :--- | :--- | :--- |
 | **🛍️ LocoShopee** | Hyperlocal Quick Commerce & Retail SaaS | `React Native (Expo 51)`, `Next.js 14`, `Express`, `TypeScript`, `Prisma 5`, `PostgreSQL`, `Cloudflare R2` | 0% commission direct P2P UPI settlement, multi-vendor cart splitting, 2–20 km Haversine search, deterministic order state machine, 430/430 tests passing | [View Deep Dive ➔](./locoshopee.md) |
 | **🎯 TargetTNgrp4** | EdTech / Competitive Exam SaaS | `Next.js 16 App Router`, `React 19`, `TypeScript (Strict)`, `Prisma 5`, `PostgreSQL`, `Tailwind v4` | Authentic 200Q/180-min exam engine, zero answer leakage server scoring, automated spaced-repetition Mistake Book, dual independent JWT/DB auth | [View Deep Dive ➔](./targettngrp4.md) |
+| **🎓 E-Academy** | EdTech / Multi-Institute LMS & Virtual Class | `PHP 7.4/8.x`, `CodeIgniter 3`, `MySQL`, `WebRTC (Jitsi Meet)`, `Bootstrap 4`, `Razorpay` | Multi-branch tenant data isolation (`admin_id`), browser-native WebRTC live classroom, 12K+ LOC async DataTables engine, multi-batch enrollment | [View Deep Dive ➔](./e-academy-lms.md) |
 | **🏠 RentKhata** | PropTech / Co-Living SaaS | `Next.js 15`, `NestJS 11`, `React Native (Expo 52)`, `PostgreSQL`, `Prisma 7`, `Redis` | Double-entry financial ledger (integer paise), multi-tenant property hierarchy, sub-meter utility billing, tenant self-service portal | [View Deep Dive ➔](./rentkhata.md) |
 | **🚚 Compass Transport** | Freight Logistics & Supply Chain | `PHP 8`, `Laravel 8`, `MySQL 8`, `Blade`, `DomPDF`, `Laravel-Excel` | Multi-branch session isolation (`DLI` vs `UMB`), dynamic counter bilty billing, payment-status GST allocation, high-fidelity vector PDF generation | [View Deep Dive ➔](./compass-transport.md) |
 | **🩺 Medilab** | HealthTech / Pathology SaaS | `PHP 8`, `Laravel 8`, `MySQL 8`, `Razorpay API`, `Bootstrap 5` | A-Z diagnostic test search, Razorpay online payment capture, patient portal with 24/7 digital medical report downloads, dual-guard session auth | [View Deep Dive ➔](./medilab-pathology.md) |
@@ -37,6 +38,15 @@ flowchart TD
         TN_BE["Next.js 16 Server Actions + Prisma 5"]
         TN_DB[("PostgreSQL (Pooled)")]
         TN_FE --> TN_BE --> TN_DB
+    end
+
+    subgraph EdTechLMS["Multi-Institute LMS (E-Academy)"]
+        EA_FE["Admin + Teacher + Student Web Portals"]
+        EA_BE["CodeIgniter 3 MVC + Ajaxcall Engine"]
+        EA_RTC["WebRTC Video Bridge (Jitsi Meet)"]
+        EA_DB[("MySQL (Multi-Branch Partitioned)")]
+        EA_FE --> EA_BE --> EA_DB
+        EA_FE -.->|Live Class| EA_RTC
     end
 
     subgraph EnterpriseSaaS["PropTech SaaS (RentKhata)"]
@@ -89,13 +99,14 @@ flowchart TD
 ```
 ├── Languages: TypeScript (Strict), JavaScript (ES6+), PHP (7.4, 8.x, 8.1+), SQL, HTML5, CSS3
 ├── Mobile & Frontend: React Native (Expo SDK 51/52), Next.js (14/15/16 App Router), React (18/19), Tailwind CSS (v3 & v4), Bootstrap (4 & 5)
-├── Backend Frameworks: Express.js 4.19 (Modular Monolith), NestJS 11, Fastify 5, Laravel (8.x & 10.x), Node.js
+├── Backend Frameworks: Express.js 4.19 (Modular Monolith), NestJS 11, Fastify 5, Laravel (8.x & 10.x), CodeIgniter 3 MVC, Node.js
+├── Real-Time & Video: WebRTC, Jitsi Meet External API, Dynamic Room Hash Generation
 ├── Databases & ORM: PostgreSQL (Supabase, Neon, Pooling), MySQL 8.x, MongoDB, Prisma (5.x & 7.x), Eloquent ORM
 ├── Cloud Storage & Vault: Cloudflare R2, AWS S3 (Presigned PUT/GET URLs), Private KYC Buckets
-├── Payment & Settlement: Native 1-Tap UPI Intent (upi://pay), Dynamic QR, Razorpay SDK & HMAC-SHA256 Webhooks
+├── Payment & Settlement: Native 1-Tap UPI Intent (upi://pay), Dynamic QR, Razorpay SDK & Webhooks, PayPal SDK
 ├── Caching & Async: Redis, BullMQ Background Queues
 ├── Document & Reporting Engines: PDFKit (Indian GST Invoices), Barryvdh DomPDF, Maatwebsite Laravel-Excel, Yajra DataTables, PapaParse
-├── DevOps & Cloud: Cloudflare (WAF/DNS), Nginx Reverse Proxy, Oracle Cloud Infrastructure, PM2, Git, GitHub Actions
+├── DevOps & Cloud: Cloudflare (WAF/DNS), Nginx Reverse Proxy, Apache (.htaccess), Oracle Cloud Infrastructure, PM2, Git, GitHub Actions
 ```
 
 ---
@@ -116,37 +127,44 @@ flowchart TD
    * Dual independent authentication: stateless student JWT vs stateful admin DB sessions
    * Strict 150-line clean code standard across repository
 
-3. **[RentKhata Architectural Deep-Dive](./rentkhata.md)**
+3. **[E-Academy LMS & Virtual Classroom Deep-Dive](./e-academy-lms.md)**
+   * Multi-branch tenant data isolation (`admin_id` column migration & session scoping)
+   * In-browser WebRTC interactive video streaming with teacher moderator locks
+   * High-concurrency asynchronous DataTables controller (`Ajaxcall.php` 12,000+ LOC)
+   * Multi-batch student enrollment with hybrid offline/online fee modes (`pay_mode`)
+   * Dynamic institute branding customization (`theme_color`) and trilingual translation
+
+4. **[RentKhata Architectural Deep-Dive](./rentkhata.md)**
    * Multi-tenant property inventory modeling
    * Append-only double-entry ledger & integer paise calculations
    * Contract-first OpenAPI client code generation
    * Microservice-ready modular architecture
 
-4. **[Compass Transport Architectural Deep-Dive](./compass-transport.md)**
+5. **[Compass Transport Architectural Deep-Dive](./compass-transport.md)**
    * Regional branch context partitioning & ID prefixes
    * Real-time counter bilty drafting & live client auto-completion
    * GST compliance engine based on consignment terms (`PAID` vs `TO PAY`)
    * Consolidated consignee statement vouchers
 
-5. **[Medilab Pathology Laboratory Deep-Dive](./medilab-pathology.md)**
+6. **[Medilab Pathology Laboratory Deep-Dive](./medilab-pathology.md)**
    * Real-time A-Z diagnostic test catalog search engine
    * Direct Razorpay payment gateway integration for test booking fees
    * End-to-end digital report delivery system mapping files to patient profiles
    * Dual-guard session authentication architecture (`admin_auth` & `user_auth`)
 
-6. **[Gems Testing India Architectural Deep-Dive](./gems-testing-india.md)**
+7. **[Gems Testing India Architectural Deep-Dive](./gems-testing-india.md)**
    * Universal single-index search resolving across 4 polymorphic laboratory models in <8ms
    * Vector PVC card generation pipeline with custom print stylesheets
    * Asynchronous server-side Yajra DataTables integration
    * Granular batch Excel import validator
 
-7. **[Pragya Crop Advisory Architectural Deep-Dive](./pragya-crop-advisory.md)**
+8. **[Pragya Crop Advisory Architectural Deep-Dive](./pragya-crop-advisory.md)**
    * Comprehensive 12-stage agricultural decision tree
    * High-performance composite joins for disease & pest mitigation
    * Dynamic taxonomy decoupling mobile app UI from app-store binary updates
    * Devanagari Unicode (`utf8mb4`) and English bilingual data pipeline
 
-8. **[Dr. YSP University Architectural Deep-Dive](./ysp-university.md)**
+9. **[Dr. YSP University Architectural Deep-Dive](./ysp-university.md)**
    * Asynchronous institutional domain verification and session-bound OTP validation
    * Centralized helper architecture (`getFaculty($page)`) for dynamic faculty-to-department page binding
    * Automated date-filtered notice, tender, and recruitment circular expiration engine

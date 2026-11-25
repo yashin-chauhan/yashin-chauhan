@@ -74,6 +74,21 @@ I take pride in transforming ideas from **problem → architecture → clean cod
 
 ---
 
+### 🎓 [E-Academy — Enterprise Multi-Institute LMS & Virtual Class Platform](./projects/e-academy-lms.md)
+*A multi-tenant learning management system (LMS), WebRTC-powered virtual classroom, and examination engine for coaching academies.*
+
+* **Problem Solved:** Multi-branch institutes face data mingling across branches, friction with external meeting tools (Zoom), manual multi-batch fee reconciliation, and static branding.
+* **Engineering Highlights:**
+  * **Multi-Branch Tenant Scoping:** Database-level isolation using `admin_id` foreign key scoping across batches, students, fee histories, and attendance records.
+  * **In-Browser WebRTC Virtual Classroom:** Browser-native interactive video streaming integrated with Jitsi Meet External API with dynamic room hashing and teacher moderator locks.
+  * **Asynchronous Core Engine (`Ajaxcall.php`):** 12,000+ LOC asynchronous controller executing server-side DataTables pagination with explicit SQL index hints (`USE INDEX (id)`).
+  * **Multi-Batch Enrollment & Hybrid Fee Ledger:** Support for enrolling students across multiple subjects with offline cash and online gateway payment reconciliation (`pay_mode`).
+  * **Dynamic Whitelabeling & Trilingual Localization:** Institute-level color customization (`theme_color`) and full language switching across English, Arabic, and French.
+* **Tech Stack:** `PHP 7.4/8.x` · `CodeIgniter 3 MVC` · `MySQL (MariaDB)` · `WebRTC (Jitsi Meet)` · `Bootstrap 4` · `jQuery` · `Razorpay` · `PayPal`
+* 📖 **Deep Dive:** [Read Architectural Case Study](./projects/e-academy-lms.md)
+
+---
+
 ### 🏠 [RentKhata — Enterprise PG & Co-Living Operating Platform](./projects/rentkhata.md)
 *A multi-tenant, double-entry financial operating system engineered for Indian PG, co-living, and hostel operators.*
 
