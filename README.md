@@ -89,6 +89,20 @@ I take pride in transforming ideas from **problem → architecture → clean cod
 
 ---
 
+### 🗺️ [Bearing Technology — Drone UAV & Topographic Survey Management Platform](./projects/bearing-technology.md)
+*A full-stack geospatial survey showcase, field surveyor dispatch & upload portal, and administrative audit ERP built for drone UAV mapping, GIS, and engineering consultancy operations.*
+
+* **Problem Solved:** Drone and land survey operations face fragmented field reporting, manual SD card photo handoffs, unstructured field site expense claims, and lack of a centralized project portfolio for corporate infrastructure clients.
+* **Engineering Highlights:**
+  * **Dual-Guard Session Authentication:** Strict security separation between administrative audit operations (`admin_auth` guard with `ADMIN_LOGIN` session keys) and field surveyor uploads (`user_auth` guard with `USER_LOGIN` session keys).
+  * **Surveyor Field Dispatch & Upload Portal:** Mobile-responsive field upload interface allowing on-site surveyors to submit geo-tagged site images, site remarks (`remark_1`, `remark_2`), and field expense vouchers (`amount`).
+  * **Administrative Audit & Image Review Console:** Secure inspection console for project managers to review high-resolution survey imagery, audit surveyor expense claims, and manage field surveyor credentials.
+  * **Dynamic Corporate Showcase & Services CMS:** Public-facing web portal showcasing drone UAV mapping, DGPS surveys, GIS modeling, and forestry cadastral capabilities with dynamic client inquiries and gallery management.
+* **Tech Stack:** `PHP 7.4/8.0` · `Laravel 8 MVC` · `MySQL` · `Blade` · `Bootstrap 4` · `jQuery` · `DataTables`
+* 📖 **Deep Dive:** [Read Architectural Case Study](./projects/bearing-technology.md)
+
+---
+
 ### 🏠 [RentKhata — Enterprise PG & Co-Living Operating Platform](./projects/rentkhata.md)
 *A multi-tenant, double-entry financial operating system engineered for Indian PG, co-living, and hostel operators.*
 
