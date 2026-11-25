@@ -44,6 +44,21 @@ I take pride in transforming ideas from **problem → architecture → clean cod
 
 ---
 
+### 🛍️ [LocoShopee — Zero-Commission Hyperlocal Marketplace Ecosystem](./projects/locoshopee.md)
+*A dual-role mobile commerce platform, geospatial discovery engine, and direct peer-to-peer UPI settlement system for neighborhood retail.*
+
+* **Problem Solved:** Traditional delivery aggregators levy 15%–30% commissions, lock vendor payouts in 7–14 day escrow, and inflate customer fees with external courier fleets.
+* **Engineering Highlights:**
+  * **0% Commission Direct P2P UPI Settlement:** Customers pay merchants directly via native 1-Tap UPI Intent (`upi://pay`) or dynamic QR with zero platform escrow and automated 12-digit UTR tracking.
+  * **Predictable Merchant SaaS Subscriptions:** Recurring vendor tiers (Silver ₹499/3mo, Gold ₹699/6mo, Platinum ₹999/12mo) with Razorpay HMAC webhooks and automated 18% GST PDF tax invoices (SAC 998314).
+  * **Sub-Second Radial Geospatial Search:** 2–20 km radius store discovery powered by Haversine spherical math and PostgreSQL `pg_trgm` fuzzy indexing.
+  * **Unified Dual-Role Mobile App & Smart Cart:** Single Expo SDK 51 React Native app for Customer $\leftrightarrow$ Seller switching and automated multi-vendor cart splitting into per-merchant orders.
+  * **Strict 150-Line Modular Architecture:** 246 backend TypeScript files adhering to a $\le 150$ line limit with 430/430 automated test cases passing (100% pass rate).
+* **Tech Stack:** `React Native (Expo SDK 51)` · `Next.js 14` · `Node.js` · `Express 4.19` · `TypeScript 5.5` · `Prisma 5.22` · `PostgreSQL` · `Cloudflare R2` · `Zod 3.23`
+* 📖 **Deep Dive:** [Read Architectural Case Study](./projects/locoshopee.md)
+
+---
+
 ### 🎯 [TargetTNgrp4 — Enterprise Bilingual Exam Engine & Aspirant Operating Platform](./projects/targettngrp4.md)
 *A high-performance, bilingual (Tamil & English) SaaS mock examination engine, syllabus practice platform, and automated mistake diagnostic system engineered for TNPSC Group 4 aspirants.*
 
